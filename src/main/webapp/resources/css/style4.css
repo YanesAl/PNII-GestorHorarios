@@ -41,7 +41,7 @@ form {
   gap: 1.5rem;
 }
 
-/* Panel Estilo Tarjeta */
+
 .form-panel {
   display: grid;
   grid-template-columns: auto auto;
@@ -62,7 +62,7 @@ form {
   text-transform: uppercase;
 }
 
-/* --- CAMPOS DE SOLO LECTURA (Confirmación de Persona) --- */
+
 .form-panel span {
   color: var(--color-dark);
   font-size: 1.1rem;
@@ -74,7 +74,7 @@ form {
   display: inline-block;
 }
 
-/* --- CAMPOS SELECTORES (Enums de Docente) --- */
+
 select {
   width: var(--input-width);
   padding: 0.8rem;
@@ -98,7 +98,7 @@ select:focus {
   box-shadow: 0 0 8px rgba(212, 229, 243, 0.2);
 }
 
-/* Separador horizontal entre confirmación y edición */
+
 hr {
   grid-column: span 2;
   border: 0;
@@ -107,10 +107,11 @@ hr {
   width: 100%;
 }
 
-/* Botones */
+
 .botones {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: var(--space-sm);
   margin-top: 1rem;
 }

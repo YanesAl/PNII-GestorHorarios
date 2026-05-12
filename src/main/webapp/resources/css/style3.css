@@ -63,14 +63,14 @@ form {
   letter-spacing: 1px;
 }
 
-/* --- AJUSTE: Campos de Entrada (Input y Select) --- */
+
 input[type="text"],
 input[type="number"],
 select {
   width: var(--input-width);
   padding: 0.8rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--color-accent); /* Borde sutil inicial */
+  border: 1px solid var(--color-accent); 
   background-color: #1a1a1a;
   color: var(--color-dark);
   font-family: inherit;
@@ -79,7 +79,7 @@ select {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Efecto al seleccionar un campo para escribir */
+
 input[type="text"]:focus,
 select:focus {
   border-color: var(--color-secondary);
@@ -87,7 +87,7 @@ select:focus {
   background-color: #222;
 }
 
-/* Estilo para los textos de confirmación si decides usarlos en esta vista */
+
 .form-panel span {
   color: var(--color-dark);
   font-size: 1.1rem;
@@ -95,7 +95,7 @@ select:focus {
   display: inline-block;
 }
 
-/* Botones */
+
 .botones {
   display: flex;
   justify-content: center;
@@ -124,11 +124,10 @@ select:focus {
 }
 
 .btn-limpiar:hover {
-  background-color: var(--color-error); /* Cambio a rojo para indicar "cancelar/volver" */
-  color: var(--color-dark);
+  background-color: var(--color-error); 
 }
 
-/* Mensajes de error */
+
 .mensajes-error {
   color: var(--color-error);
   margin-bottom: 1rem;
