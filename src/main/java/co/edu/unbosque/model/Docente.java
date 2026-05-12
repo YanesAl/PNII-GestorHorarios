@@ -5,7 +5,7 @@ import co.edu.unbosque.model.enums.EstadoDocente;
 import co.edu.unbosque.model.enums.TipoVinculacion;
 import jakarta.persistence.*;
 
-import java.util.List;
+
 
 @Entity
 @Table(name = "docente")
