@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Registro</title>
+    <h:outputStylesheet library="css" name="style2.css"/>
+</h:head>
+
+<h:body>
+
+    <h1>Registro de Usuario</h1>
+
+    <h:form id="formBase">
+
+        <h:messages globalOnly="true" styleClass="mensajes-error" style="color:red"/>
+
+        <h:panelGrid columns="3" styleClass="form-panel">
+
+            <h:outputLabel value="Tipo de Usuario:" for="tipo"/>
+            <h:selectOneMenu id="tipo"
+                             value="#{personaBean.tipoPersona}"
+                             required="true">
+
+                <f:selectItems value="#{
+        [
+            ['Seleccione...', ''],
+            ['PERSONA BASICA', 'PERSONA'],
+            ['DOCENTE', 'DOCENTE'],
+            ['ESTUDIANTE', 'ESTUDIANTE']
+        ]
+    }"
+                               var="t"
+                               itemLabel="#{t[0]}"
+                               itemValue="#{t[1]}"/>
+
+            </h:selectOneMenu>
+            <h:message for="tipo" style="color:red"/>
+
+            <h:outputLabel value="Identificación:" for="numeroId"/>
+            <h:inputText id="numeroId"
+                         value="#{personaBean.persona.numeroId}"
+                         required="true"
+                         requiredMessage="La identificación es obligatoria."/>
+            <h:message for="numeroId" style="color:red"/>
+
+            <h:outputLabel value="Nombre:" for="nombre"/>
+            <h:inputText id="nombre"
+                         value="#{personaBean.persona.nombre}"
+                         required="true"
+                         requiredMessage="El nombre es obligatorio."/>
+            <h:message for="nombre" style="color:red"/>
+
+            <h:outputLabel value="Apellido:" for="apellido"/>
+            <h:inputText id="apellido"
+                         value="#{personaBean.persona.apellido}"
+                         required="true"
+                         requiredMessage="El apellido es obligatorio."/>
+            <h:message for="apellido" style="color:red"/>
+
+        </h:panelGrid>
+
+        <div class="botones">
+
+            <h:commandButton value="Siguiente"
+                             action="#{personaBean.prepararRegistroDetallado()}"
+                             styleClass="btn-guardar"/>
+
+            <h:commandButton value="Limpiar"
+                             action="#{personaBean.nuevaPersona()}"
+                             immediate="true"
+                             styleClass="btn-limpiar">
+                <f:ajax render="@form"/>
+            </h:commandButton>
+
+        </div>
+
+    </h:form>
+
+</h:body>
+</html>

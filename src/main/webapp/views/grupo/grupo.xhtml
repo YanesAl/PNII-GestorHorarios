@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Gestión de Grupos</title>
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+
+<h:body>
+
+    <h:form id="formGrupo">
+
+        <p:growl id="msgs" />
+
+        <p:panel header="GESTIÓN DE GRUPOS">
+
+            <p:panelGrid id="panelDatos" columns="2">
+
+                <p:outputLabel value="Cupo máximo"/>
+                <p:inputText value="#{grupoBean.grupo.cupoMaximo}" />
+
+                <p:outputLabel value="Cupo mínimo"/>
+                <p:inputText value="#{grupoBean.grupo.cupoMinimo}" />
+
+                <p:outputLabel value="Estado"/>
+                <p:selectOneMenu value="#{grupoBean.grupo.estadoGrupo}">
+                    <f:selectItems value="#{grupoBean.estadosGrupo}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel value="ID Curso"/>
+                <p:inputText value="#{grupoBean.grupo.idCurso}" />
+
+                <p:outputLabel value="ID Docente"/>
+                <p:inputText value="#{grupoBean.grupo.idDocente}" />
+
+            </p:panelGrid>
+
+            <br/>
+
+            <p:commandButton value="Nuevo"
+                             action="#{grupoBean.nuevo}"
+                             update="@form"
+                             process="@this" />
+
+            <p:commandButton value="Guardar"
+                             action="#{grupoBean.guardar}"
+                             update="@form"
+                             process="@form" />
+
+            <p:commandButton value="Eliminar"
+                             action="#{grupoBean.eliminar}"
+                             update="@form"
+                             process="@this"
+                             disabled="#{empty grupoBean.seleccionado}" />
+
+            <br/><br/>
+
+            <p:dataTable id="tablaGrupos"
+                         value="#{grupoBean.listaGrupos}"
+                         var="g"
+                         selection="#{grupoBean.seleccionado}"
+                         selectionMode="single"
+                         rowKey="#{g.idGrupo}">
+
+                <p:ajax event="rowSelect"
+                        listener="#{grupoBean.seleccionarFila}"
+                        update="@form" />
+
+                <p:column headerText="ID">
+                    #{g.idGrupo}
+                </p:column>
+
+                <p:column headerText="Curso">
+                    #{g.idCurso}
+                </p:column>
+
+                <p:column headerText="Docente">
+                    #{g.idDocente}
+                </p:column>
+
+                <p:column headerText="Estado">
+                    #{g.estadoGrupo}
+                </p:column>
+
+                <p:column headerText="Max">
+                    #{g.cupoMaximo}
+                </p:column>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Calistoga&display=swap');
+
+:root {
+  --color-primary: #000000;
+  --color-secondary: #d4e5f3;
+  --color-dark: #ffffff;
+  --color-accent: #969697;
+  --color-error: #ff4d4d;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --font-body: "Calistoga", sans-serif;
+  --font-title: "Fredericka the Great", cursive;
+  --input-width: 20rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  padding: var(--space-md);
+}
+
+h1 {
+  font-family: var(--font-title);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  color: var(--color-secondary);
+  font-size: 2.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Panel de Formulario Estilo Tarjeta */
+.form-panel {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: #0d0d0d;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  border: 1px solid #222;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.form-panel label {
+  color: var(--color-secondary);
+  text-align: right;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- AJUSTE: Campos de Entrada (Input y Select) --- */
+input[type="text"],
+input[type="number"],
+select {
+  width: var(--input-width);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-accent); /* Borde sutil inicial */
+  background-color: #1a1a1a;
+  color: var(--color-dark);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto al seleccionar un campo para escribir */
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 8px rgba(212, 229, 243, 0.3);
+  background-color: #222;
+}
+
+/* Estilo para los textos de confirmación si decides usarlos en esta vista */
+.form-panel span {
+  color: var(--color-dark);
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  display: inline-block;
+}
+
+/* Botones */
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: 1rem;
+}
+
+.btn-guardar,
+.btn-limpiar {
+  background-color: var(--color-secondary);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.btn-guardar:hover {
+  background-color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.btn-limpiar:hover {
+  background-color: var(--color-error); /* Cambio a rojo para indicar "cancelar/volver" */
+  color: var(--color-dark);
+}
+
+/* Mensajes de error */
+.mensajes-error {
+  color: var(--color-error);
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+  list-style: none;
+  font-size: 0.9rem;
+}

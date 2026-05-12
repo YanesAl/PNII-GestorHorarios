@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Sistema Académico - Universidad</title>
+    <h:outputStylesheet library="css" name="style0.css"/>
+</h:head>
+
+<h:body>
+
+    <nav class="nav-superior">
+        <div class="nav-superior__content">
+
+            <h:link outcome="/index.xhtml" styleClass="nav-superior__logo">
+                Universidad el Bosque
+            </h:link>
+
+            <div class="nav-superior__links">
+
+                <h:link outcome="/index.xhtml" styleClass="nav-link-item">Inicio</h:link>
+                <h:link outcome="/views/curso/curso.xhtml" styleClass="nav-link-item">Curso</h:link>
+                <h:link outcome="/views/usuario/persona.xhtml" styleClass="nav-link-item">Usuario</h:link>
+                <h:link outcome="/views/grupo/grupo.xhtml" styleClass="nav-link-item">Grupo</h:link>
+                <h:link outcome="/views/horario/horario.xhtml" styleClass="nav-link-item">Horarios</h:link>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="layout-wrapper">
+
+        <h1 class="h1__title">Gestor de horarios</h1>
+
+        <div class="seccion">
+
+            <div class="mensaje">
+                <h:outputText value="#{inicioBean.mensaje}" />
+            </div>
+
+            <section class="introduccion">
+                Esta es una aplicación diseñada para generar horarios en los diferentes
+                programas de pregrado ofrecidos por la Universidad. Permite la gestión de
+                cursos, grupos, secciones y asignación de horarios para docentes y estudiantes,
+                optimizando recursos e infraestructura.
+            </section>
+
+            <div class="contenedor">
+                <h:graphicImage library="assets"
+                                name="0.webp"
+                                styleClass="contenedor__imagen"
+                                alt="App para horarios" />
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER NUEVO -->
+    <footer class="footer">
+        <div class="footer__content">
+
+            <p>Sistema Académico © 2026 - Universidad</p>
+
+            <p>Desarrollado para la gestión de horarios académicos</p>
+
+        </div>
+    </footer>
+
+</h:body>
+</html>

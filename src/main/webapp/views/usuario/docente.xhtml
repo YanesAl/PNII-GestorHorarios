@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Registro Docente</title>
+    <h:outputStylesheet library="css" name="style3.css"/>
+</h:head>
+
+<h:body>
+
+    <h1>Paso 2: Información Académica del Docente</h1>
+
+    <h:form id="formDocente">
+
+        <h:panelGrid columns="2" styleClass="form-panel">
+
+            <h:outputLabel value="Identificación:" />
+            <h:outputText value="#{personaBean.persona.numeroId}" />
+
+            <h:outputLabel value="Nombre Completo:" />
+            <h:outputText value="#{personaBean.persona.nombre} #{personaBean.persona.apellido}" />
+
+            <h:panelGroup layout="block" style="grid-column: span 2;">
+                <hr/>
+            </h:panelGroup>
+
+            <h:outputLabel value="Escalafón:" for="escalafon" />
+            <h:selectOneMenu id="escalafon"
+                             value="#{docenteBean.docente.escalafon}"
+                             required="true">
+                <f:selectItem itemLabel="Seleccione..." itemValue="#{null}" noSelectionOption="true"/>
+                <f:selectItems value="#{docenteBean.escalafones}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel value="Tipo Vinculación:" for="vinculacion" />
+            <h:selectOneMenu id="vinculacion"
+                             value="#{docenteBean.docente.tipoVinculacion}"
+                             required="true">
+                <f:selectItem itemLabel="Seleccione..." itemValue="#{null}" noSelectionOption="true"/>
+                <f:selectItems value="#{docenteBean.tiposVinculacion}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel value="Estado:" for="estado" />
+            <h:selectOneMenu id="estado"
+                             value="#{docenteBean.docente.estadoDocente}"
+                             required="true">
+                <f:selectItem itemLabel="Seleccione..." itemValue="#{null}" noSelectionOption="true"/>
+                <f:selectItems value="#{docenteBean.estadosDocente}" />
+            </h:selectOneMenu>
+
+        </h:panelGrid>
+
+        <div class="botones">
+
+            <h:commandButton value="Finalizar Registro"
+                             action="#{docenteBean.guardar}"
+                             styleClass="btn-guardar" />
+
+            <h:commandButton value="Corregir Datos Personales"
+                             action="persona?faces-redirect=true"
+                             immediate="true"
+                             styleClass="btn-limpiar" />
+
+        </div>
+
+    </h:form>
+
+</h:body>
+</html>

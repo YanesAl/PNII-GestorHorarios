@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Sistema Académico - Cursos</title>
+    <h:outputStylesheet library="css" name="style1.css"/>
+</h:head>
+
+<h:body>
+    <h1>Gestión de Cursos</h1>
+
+    <h:form id="formCurso">
+        <h:panelGroup id="mensajesPanel">
+            <h:messages globalOnly="true" styleClass="mensajes-error"/>
+        </h:panelGroup>
+
+        <h:panelGrid columns="2" styleClass="form-panel" id="panelDatos">
+            <h:outputLabel value="Nombre del Curso:" for="nombre"/>
+            <h:inputText id="nombre" value="#{cursoBean.curso.nombreCurso}"
+                         required="true" requiredMessage="Nombre obligatorio"/>
+
+            <h:outputLabel value="Intensidad Horaria:" for="intensidad"/>
+            <h:inputText id="intensidad" value="#{cursoBean.curso.intensidadHoraria}">
+                <f:convertNumber integerOnly="true" />
+            </h:inputText>
+
+            <h:outputLabel value="Semestre:" for="semestre"/>
+            <h:inputText id="semestre" value="#{cursoBean.curso.semestre}">
+                <f:convertNumber integerOnly="true" />
+            </h:inputText>
+
+            <h:outputLabel value="Créditos:" for="creditos"/>
+            <h:inputText id="creditos" value="#{cursoBean.curso.creditos}">
+                <f:convertNumber integerOnly="true" />
+            </h:inputText>
+
+            <h:outputLabel value="Aula Requerida:" for="aula"/>
+            <h:selectOneMenu id="aula" value="#{cursoBean.curso.aulaRequerida}" required="true">
+                <f:selectItem itemLabel="Seleccione..." itemValue="#{null}" />
+                <f:selectItems value="#{cursoBean.tiposAula}" />
+            </h:selectOneMenu>
+        </h:panelGrid>
+
+        <div class="botones">
+            <h:commandButton value="Guardar" action="#{cursoBean.guardarCurso}" styleClass="btn-guardar">
+                <f:ajax execute="panelDatos" render="panelDatos contenedorTabla mensajesPanel" />
+            </h:commandButton>
+
+            <h:commandButton value="Limpiar" action="#{cursoBean.limpiar}" immediate="true" styleClass="btn-limpiar">
+                <f:ajax render="panelDatos mensajesPanel" />
+            </h:commandButton>
+        </div>
+
+        <h:panelGroup id="contenedorTabla">
+
+            <h:dataTable id="tablaCursos" value="#{cursoBean.listaCursos}" var="c"
+                         styleClass="tabla-cursos" rendered="#{not empty cursoBean.listaCursos}">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{c.idCurso}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nombre</f:facet>
+                    <h:outputText value="#{c.nombreCurso}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Semestre</f:facet>
+                    <h:outputText value="#{c.semestre}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Créditos</f:facet>
+                    <h:outputText value="#{c.creditos}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Aula</f:facet>
+                    <h:outputText value="#{c.aulaRequerida}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Acciones</f:facet>
+                    <h:commandButton value="Editar" action="#{cursoBean.editarCurso(c)}" styleClass="btn-editar">
+                        <f:ajax render="formCurso:panelDatos" />
+                    </h:commandButton>
+                    <h:commandButton value="Eliminar" action="#{cursoBean.eliminarCurso(c)}"
+                                     onclick="return confirm('¿Desea eliminar curso?');" styleClass="btn-eliminar">
+                        <f:ajax render="formCurso:contenedorTabla" />
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+
+            <h:panelGroup rendered="#{empty cursoBean.listaCursos}" styleClass="panel-vacio">
+                <h:outputText value="No se encuentran cursos registrados aún." />
+            </h:panelGroup>
+
+        </h:panelGroup>
+    </h:form>
+</h:body>
+</html>

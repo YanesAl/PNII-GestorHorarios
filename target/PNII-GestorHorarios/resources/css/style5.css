@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Calistoga&display=swap');
+
+:root {
+  --color-primary: #000000;
+  --color-secondary: #d4e5f3;
+  --color-dark: #ffffff;
+  --color-accent: #969697;
+  --color-error: #ff4d4d;
+  --space-sm: 1rem;
+  --space-smm:1.5rem;
+  --space-md: 2rem;
+  --space-lg: 18rem;
+  --font-body: "Calistoga", sans-serif;
+  --font-title: "Fredericka the Great", cursive;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  padding: var(--space-md);
+}
+
+
+h1 {
+  font-family: var(--font-title);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  color: var(--color-secondary);
+  font-size: 2.5rem;
+}
+
+
+.panel-horario {
+  max-width: 95%;
+  margin: 0 auto;
+  background-color: #0f0f0f;
+  padding: var(--space-md);
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-accent);
+}
+
+
+.botones-horario {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-smm);
+  flex-wrap: wrap;
+}
+
+.btn-horario {
+  background-color: var(--color-secondary);
+  border: none;
+  padding: 0.7rem var(--space-smm);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+}
+
+.btn-horario:hover {
+  background-color: var(--color-accent);
+  color: var(--color-dark);
+}
+
+
+.tabla-horario {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-sm);
+}
+
+
+.tabla-horario th {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-primary);
+}
+
+
+.tabla-horario td {
+  padding: 0.8rem;
+  text-align: center;
+  background-color: #111;
+  color: var(--color-dark);
+  border-bottom: 1px solid #333;
+}
+
+
+.tabla-horario tr:hover td {
+  background-color: #1a1a1a;
+}
+
+
+.fila-seleccionada{
+  background-color: var(--color-accent) !important;
+  color: var(--color-secondary) !important;
+}
+
+
+.vacio {
+  text-align: center;
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
+
+.input-filtro {
+  width: var(--space-lg);
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--color-secondary);
+  background-color: #111;
+  color: var(--color-dark);
+}

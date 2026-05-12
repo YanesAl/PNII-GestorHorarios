@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Horario Académico</title>
+</h:head>
+
+<h:body>
+    <h:form id="formHorario">
+        <p:panel header="HORARIO ACADÉMICO">
+
+            <p:commandButton value="Generar"
+                             action="#{horarioBean.generar}"
+                             update="formHorario:tablaHorario"
+                             process="@form"
+                             icon="pi pi-refresh"/>
+
+            <p:commandButton value="Limpiar"
+                             action="#{horarioBean.limpiar}"
+                             update="formHorario:tablaHorario"
+                             process="@form"
+                             icon="pi pi-times"
+                             style="margin-left:5px"/>
+
+            <p:commandButton value="Eliminar"
+                             action="#{horarioBean.eliminar}"
+                             update="formHorario:tablaHorario"
+                             process="@form"
+                             icon="pi pi-trash"
+                             style="margin-left:5px">
+                <p:confirm header="Confirmar"
+                           message="¿Desea eliminar esta sección?"
+                           icon="pi pi-exclamation-triangle"/>
+            </p:commandButton>
+
+            <p:commandButton value="Ir a Inicio"
+                             action="index?faces-redirect=true"
+                             ajax="false"
+                             icon="pi pi-home"
+                             style="margin-left:5px"/>
+
+            <br/><br/>
+
+            <p:dataTable id="tablaHorario"
+                         value="#{horarioBean.listaHorario}"
+                         var="h"
+                         paginator="true"
+                         rows="10"
+                         emptyMessage="No hay horarios disponibles"
+                         selectionMode="single"
+                         selection="#{horarioBean.seleccionado}"
+                         rowKey="#{h.idSeccion}">
+
+                <p:column headerText="Curso">
+                    <h:outputText value="#{h.nombreCurso}"/>
+                </p:column>
+
+                <p:column headerText="Docente">
+                    <h:outputText value="#{h.nombreDocente}"/>
+                </p:column>
+
+                <p:column headerText="Día">
+                    <h:outputText value="#{h.diaSemana}"/>
+                </p:column>
+
+                <p:column headerText="Hora Inicio">
+                    <h:outputText value="#{h.horaInicio}"/>
+                </p:column>
+
+                <p:column headerText="Hora Fin">
+                    <h:outputText value="#{h.horaFin}"/>
+                </p:column>
+
+                <p:column headerText="Aula">
+                    <h:outputText value="#{h.nombreAula}"/>
+                </p:column>
+
+                <p:column headerText="Bloque">
+                    <h:outputText value="#{h.nombreBloque}"/>
+                </p:column>
+
+                <p:column headerText="Categoría">
+                    <h:outputText value="#{h.categoria}"/>
+                </p:column>
+
+                <p:column headerText="Estado">
+                    <h:outputText value="#{h.estadoSeccion}"/>
+                </p:column>
+
+            </p:dataTable>
+
+        </p:panel>
+
+        <p:confirmDialog global="true" showEffect="fade">
+            <p:commandButton value="Sí"
+                             type="button"
+                             styleClass="ui-confirmdialog-yes"
+                             icon="pi pi-check"/>
+            <p:commandButton value="No"
+                             type="button"
+                             styleClass="ui-confirmdialog-no"
+                             icon="pi pi-times"/>
+        </p:confirmDialog>
+
+    </h:form>
+</h:body>
+</html>

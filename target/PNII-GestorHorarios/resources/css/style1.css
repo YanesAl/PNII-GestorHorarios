@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Calistoga&display=swap');
+
+:root {
+  --color-primary: #000000;
+  --color-secondary: #d4e5f3;
+  --color-dark: #ffffff;
+  --color-accent: #969697;
+  --color-error: #ff4d4d;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --font-body: "Calistoga", sans-serif;
+  --font-title: "Fredericka the Great", cursive;
+  --input-width: 20rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  padding: var(--space-md);
+}
+
+h1 {
+  font-family: var(--font-title);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  color: var(--color-secondary);
+  font-size: 2.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+.mensajes-error {
+  color: var(--color-error);
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.form-panel {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.form-panel label {
+  color: var(--color-secondary);
+  text-align: right;
+  font-size: 1.1rem;
+}
+
+input[type="text"] {
+  width: var(--input-width);
+  padding: 0.7rem;
+  border-radius: 0.4rem;
+  border: 0.0625rem solid var(--color-secondary);
+  background-color: #111;
+  color: var(--color-dark);
+  font-family: inherit;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: 1rem;
+}
+
+
+.btn-guardar,
+.btn-limpiar {
+  background-color: var(--color-secondary);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.btn-guardar:hover,
+.btn-limpiar:hover {
+  background-color: var(--color-accent);
+  color: var(--color-dark);
+}
+
+
+.tabla-cursos {
+  margin: 3rem auto;
+  width: 95%;
+  border-collapse: collapse;
+}
+
+.tabla-cursos th {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: var(--space-sm);
+  text-align: center;
+  border: 1px solid var(--color-primary);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.tabla-cursos td {
+  padding: var(--space-sm);
+  background-color: #111;
+  color: var(--color-dark);
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.tabla-cursos tr:hover td {
+  background-color: #1a1a1a;
+}
+
+
+.btn-editar,
+.btn-eliminar {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  margin: 0 0.25rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  transition: 0.2s;
+}
+
+.btn-editar:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.btn-eliminar:hover {
+  background-color: #cc0000;
+}
+
+
+.panel-vacio {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--color-secondary);
+  font-style: italic;
+}

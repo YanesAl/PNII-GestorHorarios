@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Registro Estudiante</title>
+    <h:outputStylesheet library="css" name="style4.css"/>
+</h:head>
+
+<h:body>
+
+    <h1>Datos Académicos</h1>
+
+    <h:form id="formEstudiante">
+
+        <h:panelGroup styleClass="info-previa">
+            <h:outputText value="Registrando a: #{personaBean.persona.nombre} #{personaBean.persona.apellido}" />
+        </h:panelGroup>
+
+        <h:panelGrid columns="2" styleClass="form-panel">
+
+            <h:outputLabel value="Correo Institucional:" for="mail" />
+            <h:inputText id="mail"
+                         value="#{estudianteBean.estudiante.correo}"
+                         required="true"/>
+
+            <h:outputLabel value="Semestre Actual:" for="sem" />
+            <h:inputText id="sem"
+                         value="#{estudianteBean.estudiante.semestreCursa}">
+                <f:convertNumber integerOnly="true"/>
+            </h:inputText>
+
+            <h:outputLabel value="Estado Académico:" for="est" />
+            <h:selectOneMenu id="est"
+                             value="#{estudianteBean.estudiante.estadoEstudiante}">
+                <f:selectItem itemLabel="Seleccione..." itemValue="#{null}" noSelectionOption="true"/>
+                <f:selectItems value="#{estudianteBean.estadosEstudiante}"/>
+            </h:selectOneMenu>
+
+            <h:outputLabel value="Créditos Aprobados:" for="cred" />
+            <h:inputText id="cred"
+                         value="#{estudianteBean.estudiante.creditosAprobados}">
+                <f:convertNumber integerOnly="true"/>
+            </h:inputText>
+
+        </h:panelGrid>
+
+        <div class="botones">
+
+            <h:commandButton value="Finalizar Registro"
+                             action="#{estudianteBean.guardar}"
+                             styleClass="btn-guardar"/>
+
+            <h:commandButton value="Volver"
+                             action="persona?faces-redirect=true"
+                             immediate="true"
+                             styleClass="btn-limpiar"/>
+
+        </div>
+
+    </h:form>
+
+</h:body>
+</html>
